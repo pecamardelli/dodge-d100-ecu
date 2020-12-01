@@ -5,17 +5,7 @@
 
 #define BMP_GET_PADDING(a) ((a) % 4)
 
-#define CENTER_SCREEN	9999
-#define	MIDDLE_SCREEN	9998
-
-#define FLOWMETER		15
-#define RELAY1			0
-#define RELAY2			2
-#define RELAY3			3
-#define RELAY4			12
-
-typedef struct _bmp_header
-{
+typedef struct _bmp_header {
 	//unsigned short	bfType;
 	unsigned int   bfSize;
 	unsigned int   bfReserved;
@@ -34,8 +24,7 @@ typedef struct _bmp_header
 	unsigned int   biClrImportant;
 } bmp_header;
 
-typedef struct _bmp_pixel
-{
+typedef struct _bmp_pixel {
 	unsigned char blue;
 	unsigned char green;
 	unsigned char red;
@@ -44,10 +33,9 @@ typedef struct _bmp_pixel
 // This is faster than a function call
 #define BMP_PIXEL(r,g,b) ((bmp_pixel){(b),(g),(r)})
 
-typedef struct _bmp_img
-{
+typedef struct _bmp_img {
 	bmp_header   *img_header;
-	bmp_pixel  **img_pixels;
+	bmp_pixel 	**img_pixels;
 } bmp_img;
 
 // BMP_HEADER
