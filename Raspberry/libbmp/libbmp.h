@@ -54,10 +54,10 @@ void 			reset_screen		(unsigned char, unsigned char, unsigned char);
 void			set_pins			();
 void			flowmeter			();
 
-int 			fbfd 				= 0;
 struct 			fb_var_screeninfo 	vinfo;
 struct 			fb_fix_screeninfo 	finfo;
-long int 		screensize 			= 0;
-char 			*fbp 				= 0;
+int 			fbfd;
+long int 		screensize;
+char 			*fbp;
 
 #endif /* __LIBBMP_H__ */

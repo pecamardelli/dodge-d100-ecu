@@ -1,11 +1,4 @@
 #include "main.h"
-#include "./libbmp/libbmp.c"
-
-#include "./core/reset_screen.c"
-#include "./core/screen_setup.c"
-#include "./core/flowmeter.c"
-
-#include "./utils/pin_setup.c"
 
 int main() {
 	pin_setup();
@@ -32,9 +25,7 @@ int main() {
 	}
 	*/
 	
-	while (wait(NULL) > 0) {
-		usleep(1000);
-    }
+	wait(NULL);
 	
 	munmap(fbp, screensize);
 	close(fbfd);

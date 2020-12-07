@@ -1,9 +1,7 @@
 /* Copyright 2016 - 2017 Marc Volker Dickmann
  * Project: LibBMP
  */
-#include "./libbmp.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "../main.h"
 
 // BMP_HEADER
 
@@ -136,7 +134,7 @@ void draw_image(bmp_img *img,int x, int y, short color, unsigned char alpha){
 
 	const size_t		h				= abs (img->img_header->biHeight);
 	const size_t		offset			= (img->img_header->biHeight > 0 ? h - 1 : 0);
-	const size_t		padding			= BMP_GET_PADDING (img->img_header->biWidth);
+	//const size_t		padding			= BMP_GET_PADDING (img->img_header->biWidth);
 	const size_t		w	 			= img->img_header->biWidth;
 	unsigned short		bytes_per_pixel	= vinfo.bits_per_pixel / 8;
 	int					x_pos			= 0;

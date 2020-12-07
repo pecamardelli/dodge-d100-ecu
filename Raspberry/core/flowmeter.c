@@ -4,7 +4,7 @@ void flowmeter() {
 	int 			state 		= HIGH;
 	int 			laststate	= HIGH;
 	unsigned int	pulses		= 0;
-	unsigned int	lastpulse	= 0;
+	//unsigned int	lastpulse	= 0;
 	
 	char			filename[64];
 	bmp_img *image;

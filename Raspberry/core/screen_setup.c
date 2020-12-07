@@ -1,29 +1,29 @@
 #include "../main.h"
 
-int screen_setup() {
-    fbfd = open(frame_buffer_device, O_RDWR);
+unsigned char screen_setup() {
+    fbfd = open(FRAME_BUFFER_DEVICE, O_RDWR);
 	if (!fbfd) {
-        printf("Error: cannot open framebuffer device.\n");
-        return NULL;
+        perror(strerror(errno));
+        return 0x0;
 	}
 
 	if (ioctl(fbfd, FBIOGET_FSCREENINFO, &finfo)) {
-        printf("Error reading fixed information.\n");
-        return NULL;
+        perror(strerror(errno));
+        return 0x0;
 	}
 
 	if (ioctl(fbfd, FBIOGET_VSCREENINFO, &vinfo)) {
-        printf("Error reading variable information.\n");
-        return NULL;
+        perror(strerror(errno));
+        return 0x0;
 	}
 
 	screensize = vinfo.xres * vinfo.yres * vinfo.bits_per_pixel / 8;
 
 	fbp = (char *) mmap(0, screensize, PROT_READ | PROT_WRITE, MAP_SHARED, fbfd, 0);
 	
-	if ((int)fbp == -1) {
-		printf("Error: failed to map framebuffer device to memory.\n");
-		return NULL;
+	if ((void *)fbp == MAP_FAILED) {
+		perror(strerror(errno));
+		return 0x0;
 	}
 
 	return 0xFF;

@@ -1,13 +1,12 @@
 #include "../main.h"
 
 void logger(char *str, char *type) {
-	char	*log_data;
 	char	*t_stamp;
 	char	log_data[MAX_LINE_LEN];
 	int		fd;
 	time_t	date;
 
-	fd = open(log_file, O_CREAT | O_WRONLY | O_APPEND, 0666);
+	fd = open(LOG_FILE, O_CREAT | O_WRONLY | O_APPEND, 0666);
 
 	if (fd == -1) return;
 

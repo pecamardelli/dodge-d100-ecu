@@ -14,11 +14,13 @@
 #include <sys/socket.h>
 #include <sys/wait.h>
 #include <time.h>
+#include <errno.h>
 
 #include "./libbmp/libbmp.h"
 
 #define MAX_LINE_LEN    256
 
+#define LOG_FILE        "/var/log/ecu.log"
 #define LOG_INFO        "INFO"
 #define LOG_WARNING     "WARN"
 #define LOG_ERROR       "ERROR"
@@ -33,16 +35,18 @@
 #define RELAY4			12
 #define FLOWMETER		15
 
-/* ---------- CONSTANTS ---------- */
-const char  *log_file               = "/var/log/ecu.log";
-const char  *frame_buffer_device    = "/dev/fb0"  
+#define FRAME_BUFFER_DEVICE "/dev/fb0"
 
 /* ---------- FUNCTION DEFINITION ---------- */
-void    logger(char *str, int type);
+unsigned char   screen_setup();
+void    reset_screen(unsigned char red, unsigned char green, unsigned char blue);
+void    logger(char *str, char *type);
+void    flowmeter();
 void    pin_setup();
 void    startup();
 
 /* ---------- GLOBAL VARS ---------- */
 bmp_img         *image;
 unsigned char   screen_ok;
+
 #endif
