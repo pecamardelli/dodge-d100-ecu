@@ -124,6 +124,7 @@ typedef struct _image {
 	int 			y;
 	unsigned char	color;
 	unsigned char	alpha;
+	unsigned char	last_state;
 }image;
 
 // This is faster than a function call
@@ -184,6 +185,15 @@ typedef struct {
 
 SYS_CONFIG sys;
 
+typedef struct {
+	float				volts;
+	float				temp;
+	float				oil;
+	float				amps;
+}READINGS;
+
+READINGS data;
+
 // --------------------------------------------- //
 // ------------ FUNCTION DEFINITION ------------ //
 // --------------------------------------------- //
@@ -203,6 +213,7 @@ unsigned char 	valid_device_type	(unsigned char dev_type);
 DEVICE * 		create_device		(unsigned char type, unsigned char enabled, u_int8_t pin, char *desc);
 unsigned char	pin_available		(u_int8_t pin);
 char 			*print_type			(unsigned char type);
+void			draw				();
 
 // utils
 void* 			create_shmem		(size_t);
@@ -248,6 +259,8 @@ image	med_gauge_01;
 image	med_gauge_02;
 
 image	digit;
+
+image	*all_images[32];
 
 // ------------------------------------- //
 // ------------ GLOBAL VARS ------------ //

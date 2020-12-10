@@ -3,7 +3,9 @@ CFLAGS	= -Wall -g
 SLIBS	= -lwiringPi
 
 CORE_DIR	= core
-CORE_OBJS	= $(CORE_DIR)/flowmeter.o $(CORE_DIR)/reset_screen.o
+CORE_OBJS	=	$(CORE_DIR)/flowmeter.o \
+				$(CORE_DIR)/reset_screen.o \
+				$(CORE_DIR)/draw.o
 
 BMP_DIR		= libbmp
 BMP_OBJS	= $(BMP_DIR)/libbmp.o
@@ -33,7 +35,6 @@ OBJS		=	ecu.o $(CORE_OBJS) \
 
 ecu: $(OBJS)
 	$(CC) $(CFLAGS) -o $@ $(OBJS) $(SLIBS)
-	make clean
 
 clean:
 	rm -f *.o \

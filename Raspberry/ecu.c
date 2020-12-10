@@ -26,18 +26,13 @@ int main() {
 
 	logger("Christine ECU initializing.", LOG_SYSTEM);
 
+
 	screen_ok = screen_setup();
+	printf("xres: %d - yres: %d\n", vinfo.xres, vinfo.yres);
 
 	DEVICE *new = create_device(DEV_FLOWMETER, 0xFF, 5, "This is the flowmeter");
 
 	if (new) add_device(new);
-
-	printf("Devices: %d\n", device_count());
-
-	printf("Type:\t%s\n", print_type(new->type));
-	printf("Enabled:\t%d\n", new->enabled ? 1 : 0);
-	printf("Pin:\t%d\n", new->pin);
-	printf("Desc:\t%s\n", new->desc);
 
 	//set_pins();
 	
@@ -46,12 +41,12 @@ int main() {
 	reset_screen(0,0,0);
 	
 	draw_image(background);
-	sleep(3);
+	sleep(1);
 	
 	reset_screen(0,0,0);
 	
 	draw_image(christine);
-	sleep(3);
+	sleep(1);
 	
 	reset_screen(0,0,0);
 	
@@ -83,7 +78,10 @@ int main() {
 	*/
 	//wait(NULL);
 
-	while (1) sleep(1);
+	while (1) {
+		draw();
+		sleep(2);
+	}
 		
 	munmap(fbp, screensize);
 	close(fbfd);

@@ -143,9 +143,17 @@ void show_header(bmp_header *header){
 }
 
 void draw_image(image _image){
-	
+	if (!_image.filename) {
+		perror("No image provided");
+		return;
+	}
+
 	bmp_img *img	= bmp_img_read(_image.filename);
-	
+
+	if (!img) {
+		perror("Could not read image.");
+		return;
+	}
 	const size_t		h				= abs (img->img_header->biHeight);
 	const size_t		offset			= (img->img_header->biHeight > 0 ? h - 1 : 0);
 	//const size_t		padding			= BMP_GET_PADDING (img->img_header->biWidth);
