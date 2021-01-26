@@ -15,7 +15,7 @@ int main() {
 	strcpy(sys.main_dir, "/var/ecu/");
 	strcpy(sys.image_dir, "images/");
 	strcpy(sys.bg_dir, "backgrounds/");
-	strcpy(sys.symbol_dir, "symbols/");
+	strcpy(sys.symbol_dir, "symbols_50x50/");
 	strcpy(sys.gauge_dir, "gauges/");
 	strcpy(sys.label_dir, "labels/");
 	strcpy(sys.number_dir, "number/");
