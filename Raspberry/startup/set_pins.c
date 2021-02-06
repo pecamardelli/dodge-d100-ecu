@@ -1,6 +1,7 @@
-#include "../main.h"
+#include "../ecu.h"
 
-void pin_setup() {
+void set_pins(){
+	
 	wiringPiSetup();
 	
 	// ------------------------------- //
